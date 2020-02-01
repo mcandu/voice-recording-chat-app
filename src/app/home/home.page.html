@@ -1,14 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        <ion-button color="primary" (click)="stopRecord()" *ngIf="recording"><ion-icon name="mic-off"></ion-icon>&nbsp;&nbsp;Stop Record</ion-button>
+        <ion-button color="primary" (click)="startRecord()" *ngIf="!recording"><ion-icon name="mic"></ion-icon>&nbsp;&nbsp;Start Record</ion-button>
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+  <ion-list>
+    <ion-item *ngFor="let audio of audioList.slice().reverse(); let i = index;">
+      <p>{{audio.filename}}</p>
+      <ion-button clear item-end large *ngIf="playing != i" (click)="playAudio(audio.filename, i)"><ion-icon name="play"></ion-icon></ion-button>
+      <ion-button clear item-end large *ngIf="playing == i" (click)="stopAudio(audio.filename, i)"><ion-icon name="pause"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>

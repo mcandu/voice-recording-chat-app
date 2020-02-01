@@ -1,5 +1,7 @@
 {
   "name": "voiceRecordingApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
