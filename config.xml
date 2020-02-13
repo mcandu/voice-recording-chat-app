@@ -110,4 +110,5 @@
         <string>We would like to access your microphone for recording</string>
     </edit-config>
     <engine name="android" spec="7.1.4" />
+    <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
 </widget>
