@@ -8,11 +8,14 @@
       </ion-header>
       <ion-content>
         <ion-list>
+          <ion-list-header class="ion-padding-vertical">
+            Options
+          </ion-list-header>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-item routerDirection="root" [routerLink]="p.url">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
-                {{p.title}}
+                {{ p.title }}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
@@ -23,8 +26,21 @@
             </ion-label>
           </ion-item>
         </ion-list>
+
+        <ion-list>
+          <ion-list-header class="ion-padding-vertical">
+            Channels
+          </ion-list-header>
+          <ion-menu-toggle auto-hide="false" *ngFor="let channel of channels">
+            <ion-item (click)="goChannel()">
+              <ion-icon slot="start" name="home"></ion-icon>
+              {{ channel.title }}
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
       </ion-content>
     </ion-menu>
+
     <ion-router-outlet id="menu-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>

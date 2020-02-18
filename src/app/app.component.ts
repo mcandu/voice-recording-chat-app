@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Platform, NavController } from '@ionic/angular';
+import { Platform, NavController, ModalController } from '@ionic/angular';
 import { AuthService } from './services/auth.service';
 import { AlertService } from './services/alert.service'
 
@@ -17,11 +17,17 @@ export class AppComponent {
       title: 'Dashboard',
       url: '/dashboard',
       icon: 'home'
+    }
+  ];
+
+  public channels = [
+    {
+      title: 'Channel 1',
+      url: '/channel',
     },
     {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
+      title: 'Channel 2',
+      url: '/channel',
     }
   ];
 
@@ -31,7 +37,7 @@ export class AppComponent {
     private statusBar: StatusBar,
     private authService: AuthService,
     private navCtrl: NavController,
-    private alertService: AlertService
+    private alertService: AlertService,
   ) {
     this.initializeApp();
   }
@@ -43,19 +49,26 @@ export class AppComponent {
       this.authService.getToken();
     });
   }
-  // When Logout Button is pressed 
+
   logout() {
-    this.authService.logout().subscribe(
-      data => {
-        this.alertService.presentToast(data['message']);
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
-        this.navCtrl.navigateRoot('/landing');
-      }
-    );
+    // this.authService.logout().subscribe(
+    //   data => {
+    //     this.alertService.presentToast(data['message']);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   },
+    //   () => {
+    //     this.navCtrl.navigateRoot('/landing');
+    //   }
+    // );
+    this.alertService.presentToast("Logged Out");
+    this.navCtrl.navigateRoot('/landing');
+  }
+
+  goChannel() {
+    this.navCtrl.navigateRoot('/channel');
+    console.log("clicked");
   }
 
 }

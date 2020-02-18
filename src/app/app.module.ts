@@ -20,6 +20,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../app/services/auth-interceptor.service';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

@@ -1,0 +1,58 @@
+:host {
+  @mixin time {
+    color: #dfdfdf;
+    float: right;
+    font-size: small;
+  }
+
+  .message {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+  }
+
+  .other-message {
+    background: var(--ion-color-tertiary);
+    color: #fff;
+    .time {
+      @include time;
+    }
+  }
+
+  .my-message {
+    background: var(--ion-color-secondary);
+    color: #fff;
+    .time {
+      @include time;
+    }
+  }
+
+  .row-box {
+    ion-col {
+      height: 60px;
+    }
+    
+    .mic-btn {
+      --padding-start: 0.5em;
+      --padding-end: 0.5em;
+      --padding-bottom: 0.3em;
+    }
+
+    .message-input {
+      width: 100%;
+      border: 1px solid var(--ion-color-medium);
+      border-radius: 10px;
+      background: #fff;
+      resize: none;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+    .msg-btn {
+      --padding-start: 0.5em;
+      --padding-end: 0.5em;
+      --padding-bottom: 0.3em;
+    }
+  }
+}

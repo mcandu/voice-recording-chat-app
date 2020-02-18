@@ -4,6 +4,7 @@ import { RegisterPage } from '../register/register.page';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertService } from 'src/app/services/alert.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,9 @@ export class LoginPage implements OnInit {
     private modalController: ModalController,
     private authService: AuthService,
     private navCtrl: NavController,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private loadingController: LoadingController
+    
   ) { }
   ngOnInit() {
   }
@@ -32,6 +35,7 @@ export class LoginPage implements OnInit {
     });
     return await registerModal.present();
   }
+
   login(form: NgForm) {
     this.authService.login(form.value.email, form.value.password).subscribe(
       data => {
@@ -49,6 +53,4 @@ export class LoginPage implements OnInit {
       }
     );
   }
-
-
 }
